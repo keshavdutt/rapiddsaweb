@@ -54,43 +54,43 @@
         "isNew": true
       },
       {
-        "url": "/stacks",
+        "url": "",
         "title": "Stack",
         "lastUpdated": "06/03/2024",
         "isNew": true
       },
       {
-        "url": "/queues",
+        "url": "",
         "title": "Queue",
         "lastUpdated": "06/03/2024",
         "isNew": false
       },
       {
-        "url": "/linked-lists",
+        "url": "",
         "title": "Linked List",
         "lastUpdated": "07/03/2024",
         "isNew": false
       },
       {
-        "url": "/trees",
+        "url": "",
         "title": "Binary Tree",
         "lastUpdated": "08/03/2024",
         "isNew": false
       },
       {
-        "url": "/graphs",
+        "url": "",
         "title": "Graph",
         "lastUpdated": "09/03/2024",
         "isNew": false
       },
       {
-        "url": "/hash-tables",
+        "url": "",
         "title": "Hash Table",
         "lastUpdated": "10/03/2024",
         "isNew": true
       },
       {
-        "url": "/hash-tables",
+        "url": "",
         "title": "Hash Table",
         "lastUpdated": "10/03/2024",
         "isNew": true
@@ -98,84 +98,84 @@
     ],
     "popularAlgorithm": [
       {
-        "url": "/sorting/bubble-sort",
+        "url": "",
         "title": "Bubble Sort",
         "lastUpdated": "06/03/2024"
       },
       {
-        "url": "/sorting/merge-sort",
+        "url": "",
         "title": "Merge Sort",
         "lastUpdated": "06/03/2024"
       },
       {
-        "url": "/sorting/quick-sort",
+        "url": "",
         "title": "Quick Sort",
         "lastUpdated": "07/03/2024"
       },
       {
-        "url": "/searching/binary-search",
+        "url": "",
         "title": "Binary Search",
         "lastUpdated": "08/03/2024"
       },
       {
-        "url": "/searching/linear-search",
+        "url": "",
         "title": "Linear Search",
         "lastUpdated": "09/03/2024"
       },
       {
-        "url": "/searching/jump-search",
+        "url": "",
         "title": "Jump Search",
         "lastUpdated": "10/03/2024"
       },
       {
-        "url": "/dynamic-programming/fibonacci",
+        "url": "",
         "title": "Fibonacci Sequence",
         "lastUpdated": "11/03/2024"
       },
       {
-        "url": "/dynamic-programming/knapsack",
+        "url": "",
         "title": "0/1 Knapsack Problem",
         "lastUpdated": "12/03/2024"
       }
     ],
     "systemDesign": [
         {
-          "url": "/sorting/bubble-sort",
+          "url": "",
           "title": "Design a Ticket booking App",
           "lastUpdated": "06/03/2024"
         },
         {
-          "url": "/sorting/merge-sort",
+          "url": "",
           "title": "Merge Sort",
           "lastUpdated": "06/03/2024"
         },
         {
-          "url": "/sorting/quick-sort",
+          "url": "",
           "title": "Quick Sort",
           "lastUpdated": "07/03/2024"
         },
         {
-          "url": "/searching/binary-search",
+          "url": "",
           "title": "Binary Search",
           "lastUpdated": "08/03/2024"
         },
         {
-          "url": "/searching/linear-search",
+          "url": "",
           "title": "Linear Search",
           "lastUpdated": "09/03/2024"
         },
         {
-          "url": "/searching/jump-search",
+          "url": "",
           "title": "Jump Search",
           "lastUpdated": "10/03/2024"
         },
         {
-          "url": "/dynamic-programming/fibonacci",
+          "url": "",
           "title": "Fibonacci Sequence",
           "lastUpdated": "11/03/2024"
         },
         {
-          "url": "/dynamic-programming/knapsack",
+          "url": "",
           "title": "0/1 Knapsack Problem",
           "lastUpdated": "12/03/2024"
         }
