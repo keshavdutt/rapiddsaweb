@@ -1,0 +1,184 @@
+{
+    "interviewQuestions": [
+      {
+        "url": "",
+        "title": "Frontend Interview Questions",
+        "lastUpdated": "06/03/2024"
+      },
+      {
+        "url": "https://sarkariprep.in/up-police-constable-bharti/",
+        "title": "React Interview Questions",
+        "lastUpdated": "16/01/2024"
+      },
+      {
+        "url": "https://sarkariprep.in/sarkariyojana/cg-mahtari-vandana-yojana/",
+        "title": "HTML CSS Interview Questions",
+        "lastUpdated": "16/01/2024"
+      },
+      {
+        "url": "https://sarkariprep.in/crpf-recruitment/",
+        "title": "Javascript Interview Questions",
+        "lastUpdated": "15/02/2024"
+      },
+      {
+        "url": "https://sarkariprep.in/aws-interview-questions/",
+        "title": "AWS Interview Questions",
+        "lastUpdated": "12/04/2024"
+      },
+      {
+        "url": "https://sarkariprep.in/java-interview-questions/",
+        "title": "Java Interview Questions",
+        "lastUpdated": "25/03/2024"
+      },
+      {
+        "url": "https://sarkariprep.in/data-science-interview-questions/",
+        "title": "Data Science Interview Questions",
+        "lastUpdated": "08/05/2024"
+      },
+      {
+        "url": "https://sarkariprep.in/python-interview-questions/",
+        "title": "Python Interview Questions",
+        "lastUpdated": "22/05/2024"
+      },
+      {
+        "url": "https://sarkariprep.in/devops-interview-questions/",
+        "title": "DevOps Interview Questions",
+        "lastUpdated": "30/05/2024"
+      }
+    ],
+    "dsaByTopics": [
+      {
+        "url": "",
+        "title": "Array",
+        "lastUpdated": "06/03/2024",
+        "isNew": true
+      },
+      {
+        "url": "/stacks",
+        "title": "Stack",
+        "lastUpdated": "06/03/2024",
+        "isNew": true
+      },
+      {
+        "url": "/queues",
+        "title": "Queue",
+        "lastUpdated": "06/03/2024",
+        "isNew": false
+      },
+      {
+        "url": "/linked-lists",
+        "title": "Linked List",
+        "lastUpdated": "07/03/2024",
+        "isNew": false
+      },
+      {
+        "url": "/trees",
+        "title": "Binary Tree",
+        "lastUpdated": "08/03/2024",
+        "isNew": false
+      },
+      {
+        "url": "/graphs",
+        "title": "Graph",
+        "lastUpdated": "09/03/2024",
+        "isNew": false
+      },
+      {
+        "url": "/hash-tables",
+        "title": "Hash Table",
+        "lastUpdated": "10/03/2024",
+        "isNew": true
+      },
+      {
+        "url": "/hash-tables",
+        "title": "Hash Table",
+        "lastUpdated": "10/03/2024",
+        "isNew": true
+      }
+    ],
+    "popularAlgorithm": [
+      {
+        "url": "/sorting/bubble-sort",
+        "title": "Bubble Sort",
+        "lastUpdated": "06/03/2024"
+      },
+      {
+        "url": "/sorting/merge-sort",
+        "title": "Merge Sort",
+        "lastUpdated": "06/03/2024"
+      },
+      {
+        "url": "/sorting/quick-sort",
+        "title": "Quick Sort",
+        "lastUpdated": "07/03/2024"
+      },
+      {
+        "url": "/searching/binary-search",
+        "title": "Binary Search",
+        "lastUpdated": "08/03/2024"
+      },
+      {
+        "url": "/searching/linear-search",
+        "title": "Linear Search",
+        "lastUpdated": "09/03/2024"
+      },
+      {
+        "url": "/searching/jump-search",
+        "title": "Jump Search",
+        "lastUpdated": "10/03/2024"
+      },
+      {
+        "url": "/dynamic-programming/fibonacci",
+        "title": "Fibonacci Sequence",
+        "lastUpdated": "11/03/2024"
+      },
+      {
+        "url": "/dynamic-programming/knapsack",
+        "title": "0/1 Knapsack Problem",
+        "lastUpdated": "12/03/2024"
+      }
+    ],
+    "systemDesign": [
+        {
+          "url": "/sorting/bubble-sort",
+          "title": "Design a Ticket booking App",
+          "lastUpdated": "06/03/2024"
+        },
+        {
+          "url": "/sorting/merge-sort",
+          "title": "Merge Sort",
+          "lastUpdated": "06/03/2024"
+        },
+        {
+          "url": "/sorting/quick-sort",
+          "title": "Quick Sort",
+          "lastUpdated": "07/03/2024"
+        },
+        {
+          "url": "/searching/binary-search",
+          "title": "Binary Search",
+          "lastUpdated": "08/03/2024"
+        },
+        {
+          "url": "/searching/linear-search",
+          "title": "Linear Search",
+          "lastUpdated": "09/03/2024"
+        },
+        {
+          "url": "/searching/jump-search",
+          "title": "Jump Search",
+          "lastUpdated": "10/03/2024"
+        },
+        {
+          "url": "/dynamic-programming/fibonacci",
+          "title": "Fibonacci Sequence",
+          "lastUpdated": "11/03/2024"
+        },
+        {
+          "url": "/dynamic-programming/knapsack",
+          "title": "0/1 Knapsack Problem",
+          "lastUpdated": "12/03/2024"
+        }
+      ]
+  }
+  
