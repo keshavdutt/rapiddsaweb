@@ -612,7 +612,7 @@ footer a {
   }
 
   .grid_container {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       margin: 8px;
       margin-bottom: 0;
   }
