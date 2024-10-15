@@ -260,11 +260,11 @@ input[type="checkbox"] {
 
 @media screen and (max-height: 450px) {
   .sidenav {
-      padding-top: 15px;
+    padding-top: 15px;
   }
 
   .sidenav a {
-      font-size: 12px;
+    font-size: 12px;
   }
 }
 
@@ -559,62 +559,63 @@ footer a {
 
 @media(min-width:1000px) {
   .button {
-      margin-left: 20px;
+    margin-left: 20px;
   }
 
   .full_content {
-      padding-left: 20px;
-      padding-right: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
   .culumns {
-      padding: 0;
+    padding: 0;
   }
 
   .list_content article p {
-      line-height: 1.8;
+    line-height: 1.8;
   }
 
   .menubar {
-      padding-bottom: 10px;
+    padding-bottom: 10px;
   }
 
 }
 
 @media(max-width:768px) {
   .logo a img {
-      max-width: 80%;
+    max-width: 80%;
   }
 
   .logo a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .full_content {
-      padding: 0;
+    padding: 0;
   }
 
   .section_heading {
-      margin-left: 8px;
-      margin-right: 8px;
+    margin-left: 8px;
+    margin-right: 8px;
   }
 
   .culumns {
-      padding: 8px;
-      padding-bottom: 0;
+    padding: 8px;
+    padding-bottom: 0;
+    flex-direction: column; /*  for showing it into single row in small devices */
   }
 
   .list_content {
-      margin-bottom: 0;
-      padding: 0;
+    margin-bottom: 0;
+    padding: 0;
   }
 
   .grid_container {
-      grid-template-columns: 1fr;
-      margin: 8px;
-      margin-bottom: 0;
+    grid-template-columns: 1fr 1fr;
+    margin: 8px;
+    margin-bottom: 0;
   }
 
 }
@@ -623,38 +624,38 @@ footer a {
 
   .list_content,
   .article_body {
-      margin: 0;
+    margin: 0;
   }
 
   .list_content {
-      margin-bottom: 10px;
+    margin-bottom: 10px;
   }
 
   .section_heading {
-      margin-top: 0;
+    margin-top: 0;
   }
 
   .list_content {
-      padding: 0;
-      margin-left: 0;
-      margin-right: 0;
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
   }
 
 }
 
 @media print {
   body {
-      padding: 10px;
-      position: relative;
+    padding: 10px;
+    position: relative;
   }
 
   header {
-      position: absolute;
-      border-style: none none double;
-      border-color: #51B167;
+    position: absolute;
+    border-style: none none double;
+    border-color: #51B167;
   }
 
   nav {
-      display: none;
+    display: none;
   }
 }
