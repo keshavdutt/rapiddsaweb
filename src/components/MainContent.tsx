@@ -7,12 +7,14 @@ import interviewQuestions from '../../public/questions'; // Import mock data
 const MainContent = () => {
   // Load initial data with minimal statuses from localStorage
   const loadData = () => {
+    if (typeof window !== "undefined") {
     const storedStatuses = JSON.parse(localStorage.getItem('questionStatuses')) || {};
     return interviewQuestions.map((question) => ({
       ...question,
       selected: storedStatuses[question.id]?.selected || false,
       lastSolved: storedStatuses[question.id]?.lastSolved || "",
     }));
+  }
   };
 
   const [data, setData] = useState({ interviewQuestions: loadData() });
