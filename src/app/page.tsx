@@ -9,9 +9,6 @@ import Head from 'next/head';
 import Header from '@/components/Header';
 import Nav from '@/components/Nav';
 import MainContent from '@/components/MainContent';
-import Script from 'next/script';
-import { useEffect } from 'react';
-
 
 export default function Home() {
 
