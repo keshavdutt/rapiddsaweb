@@ -84,7 +84,7 @@ const MainContent = () => {
               <th>Patterns
                 <select style={{ margin: 'unset', width: '100%', marginTop: '5px' }} onChange={(e) => handleFilterChange(e, 'patterns')} value={filters.patterns}>
                   <option value="">All</option>
-                  {[...new Set(data.interviewQuestions.flatMap(item => item.patterns))].map((pattern, idx) => (
+                  {[Array.from(new Set(data.interviewQuestions.flatMap(item => item.patterns)))].map((pattern, idx) => (
                     <option key={idx} value={pattern}>{pattern}</option>
                   ))}
                 </select>
@@ -100,7 +100,7 @@ const MainContent = () => {
               <th>Companies
                 <select style={{ margin: 'unset', width: '100%', marginTop: '5px' }} onChange={(e) => handleFilterChange(e, 'companies')} value={filters.companies}>
                   <option value="">All</option>
-                  {[...new Set(data.interviewQuestions.flatMap(item => item.companies))].map((company, idx) => (
+                  {[Array.from(new Set(data.interviewQuestions.flatMap(item => item.patterns)))].map((company, idx) => (
                     <option key={idx} value={company}>{company}</option>
                   ))}
                 </select>
