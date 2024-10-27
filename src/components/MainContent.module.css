@@ -1,0 +1,83 @@
+.mainContent {
+  padding: 20px;
+}
+
+.fullContent {
+  margin-top: 20px;
+}
+
+.dataTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+.dataTable th,
+.dataTable td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.dataTable th {
+  background-color: #f8f8f8;
+}
+
+.rowEven {
+  background-color: #ffffff;
+}
+
+.rowOdd {
+  background-color: #f9f9f9;
+}
+
+.tag {
+  background-color: #e0e0e0;
+  color: #333;
+  border-radius: 8px;
+  padding: 4px 8px;
+  margin-right: 5px;
+  font-size: 12px;
+  display: inline-block;
+}
+
+.difficulty {
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+.difficulty.easy {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.difficulty.medium {
+  background-color: #ffeeba;
+  color: #856404;
+}
+
+.difficulty.hard {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+
+
+/* MainContent.module.css */
+
+.companyName {
+  margin-right: 8px;
+  font-weight: 500;
+  color: #333;
+  /* Adjust color as needed */
+  display: inline-block;
+}
+
+
+.dataTable select {
+  margin-left: 5px;
+  padding: 2px;
+  font-size: 0.9rem;
+}
