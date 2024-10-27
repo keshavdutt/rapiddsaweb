@@ -62,7 +62,7 @@ const MainContent = () => {
   };
 
   // Filtered data
-  const filteredQuestions = data.interviewQuestions.filter((item) => {
+  const filteredQuestions = data.interviewQuestions?.filter((item) => {
     const patternMatch = filters.patterns ? item.patterns.includes(filters.patterns) : true;
     const difficultyMatch = filters.difficulty ? item.difficulty === filters.difficulty : true;
     const companyMatch = filters.companies ? item.companies.includes(filters.companies) : true;
