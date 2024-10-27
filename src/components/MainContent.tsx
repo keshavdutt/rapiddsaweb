@@ -29,7 +29,9 @@ const MainContent = () => {
       acc[question.id] = { selected: question.selected, lastSolved: question.lastSolved };
       return acc;
     }, {});
-    localStorage.setItem('questionStatuses', JSON.stringify(questionStatuses));
+    if (typeof window !== "undefined") {
+      localStorage.setItem('questionStatuses', JSON.stringify(questionStatuses));
+    }
   }, [data]);
 
   // Handler to toggle checkbox selection
@@ -105,7 +107,7 @@ const MainContent = () => {
                   ))}
                 </select>
               </th>
-              <th style={{width: '125px'}}>
+              <th style={{ width: '125px' }}>
                 Last Solved On
               </th>
             </tr>
