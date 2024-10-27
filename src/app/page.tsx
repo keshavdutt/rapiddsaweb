@@ -21,8 +21,8 @@ export default function Home() {
 
   useEffect(() => {
     window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      window.dataLayer.push(arguments);
+    function gtag(...args: any[]) {
+      window.dataLayer.push(args);
     }
     gtag('js', new Date());
     gtag('config', 'G-44GXY4GR6D');
