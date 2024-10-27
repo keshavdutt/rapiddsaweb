@@ -9,6 +9,7 @@ import Head from 'next/head';
 import Header from '@/components/Header';
 import Nav from '@/components/Nav';
 import MainContent from '@/components/MainContent';
+import Script from 'next/script';
 
 export default function Home() {
 
@@ -43,14 +44,14 @@ export default function Home() {
           crossOrigin="anonymous"
         />
         <link rel="stylesheet" href="/styles.css" />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-44GXY4GR6D"></script>
-        <script>
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-44GXY4GR6D"></Script>
+        <Script>
           {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
           gtag('config', 'G-44GXY4GR6D');`}
-        </script>
+        </Script>
       </Head>
 
 
