@@ -7,12 +7,14 @@ import interviewQuestions from '../../public/questions'; // Import mock data
 const MainContent = () => {
   // Load initial data with minimal statuses from localStorage
   const loadData = () => {
+    if (typeof window !== "undefined") {
     const storedStatuses = JSON.parse(localStorage.getItem('questionStatuses')) || {};
     return interviewQuestions.map((question) => ({
       ...question,
       selected: storedStatuses[question.id]?.selected || false,
       lastSolved: storedStatuses[question.id]?.lastSolved || "",
     }));
+  }
   };
 
   const [data, setData] = useState({ interviewQuestions: loadData() });
@@ -29,7 +31,9 @@ const MainContent = () => {
       acc[question.id] = { selected: question.selected, lastSolved: question.lastSolved };
       return acc;
     }, {});
-    localStorage.setItem('questionStatuses', JSON.stringify(questionStatuses));
+    if (typeof window !== "undefined") {
+      localStorage.setItem('questionStatuses', JSON.stringify(questionStatuses));
+    }
   }, [data]);
 
   // Handler to toggle checkbox selection
@@ -105,7 +109,7 @@ const MainContent = () => {
                   ))}
                 </select>
               </th>
-              <th style={{width: '125px'}}>
+              <th style={{ width: '125px' }}>
                 Last Solved On
               </th>
             </tr>
