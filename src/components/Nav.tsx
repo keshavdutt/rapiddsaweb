@@ -5,13 +5,13 @@ const Nav = () => {
       <nav id="nav-container">
         <div className="bg"></div>
         <div className="menu_icon_group">
-          <div className="button">
+          <div className="button" tabIndex={0}>
             <span className="icon-bar"></span>
             <span className="icon-bar"></span>
             <span className="icon-bar"></span>
           </div>
         </div>
-        <div id="nav-content">
+        <div id="nav-content" tabIndex={0}>
           <ul className="navbar">
             <li>
               <input type="checkbox" id="jobs" />
