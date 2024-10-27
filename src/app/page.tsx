@@ -1,11 +1,7 @@
 "use client";
 
 
-declare global {
-  interface Window {
-    dataLayer: [];
-  }
-}
+
 
 // app/page.js
 
@@ -19,14 +15,7 @@ import { useEffect } from 'react';
 
 export default function Home() {
 
-  useEffect(() => {
-    window.dataLayer = window.dataLayer || [];
-    function gtag(...args: any[]) {
-      window.dataLayer.push(args);
-    }
-    gtag('js', new Date());
-    gtag('config', 'G-44GXY4GR6D');
-  }, []);
+
 
   return (
     <>
@@ -57,12 +46,16 @@ export default function Home() {
           crossOrigin="anonymous"
         />
         <link rel="stylesheet" href="/styles.css" />
-
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-44GXY4GR6D"></script>
+        <script>
+          {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-44GXY4GR6D');`}
+        </script>
       </Head>
-      <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-44GXY4GR6D"
-        strategy="afterInteractive"
-      />
+
 
       <body>
         <Header />
