@@ -8,13 +8,13 @@ const MainContent = () => {
   // Load initial data with minimal statuses from localStorage
   const loadData = () => {
     if (typeof window !== "undefined") {
-    const storedStatuses = JSON.parse(localStorage.getItem('questionStatuses')) || {};
-    return interviewQuestions.map((question) => ({
-      ...question,
-      selected: storedStatuses[question.id]?.selected || false,
-      lastSolved: storedStatuses[question.id]?.lastSolved || "",
-    }));
-  }
+      const storedStatuses = JSON.parse(localStorage.getItem('questionStatuses')) || {};
+      return interviewQuestions.map((question) => ({
+        ...question,
+        selected: storedStatuses[question.id]?.selected || false,
+        lastSolved: storedStatuses[question.id]?.lastSolved || "",
+      }));
+    }
   };
 
   const [data, setData] = useState({ interviewQuestions: loadData() });
@@ -88,7 +88,7 @@ const MainContent = () => {
               <th>Patterns
                 <select style={{ margin: 'unset', width: '100%', marginTop: '5px' }} onChange={(e) => handleFilterChange(e, 'patterns')} value={filters.patterns}>
                   <option value="">All</option>
-                  {[Array.from(new Set(data.interviewQuestions?.flatMap(item => item.patterns)))]?.map((pattern, idx) => (
+                  {Array.from(new Set(data.interviewQuestions.map(item => item.patterns).flat())).map((pattern, idx) => (
                     <option key={idx} value={pattern}>{pattern}</option>
                   ))}
                 </select>
@@ -104,7 +104,7 @@ const MainContent = () => {
               <th>Companies
                 <select style={{ margin: 'unset', width: '100%', marginTop: '5px' }} onChange={(e) => handleFilterChange(e, 'companies')} value={filters.companies}>
                   <option value="">All</option>
-                  {[Array.from(new Set(data.interviewQuestions?.flatMap(item => item.patterns)))]?.map((company, idx) => (
+                  {Array.from(new Set(data.interviewQuestions.map(item => item.companies).flat())).map((company, idx) => (
                     <option key={idx} value={company}>{company}</option>
                   ))}
                 </select>
