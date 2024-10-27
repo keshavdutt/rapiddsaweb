@@ -39,7 +39,7 @@ const MainContent = () => {
   // Handler to toggle checkbox selection
   const handleCheckboxChange = (id) => {
     setData((prevData) => {
-      const updatedQuestions = prevData.interviewQuestions.map((item) => {
+      const updatedQuestions = prevData.interviewQuestions?.map((item) => {
         if (item.id === id) {
           return {
             ...item,
@@ -88,7 +88,7 @@ const MainContent = () => {
               <th>Patterns
                 <select style={{ margin: 'unset', width: '100%', marginTop: '5px' }} onChange={(e) => handleFilterChange(e, 'patterns')} value={filters.patterns}>
                   <option value="">All</option>
-                  {[Array.from(new Set(data.interviewQuestions?.flatMap(item => item.patterns)))].map((pattern, idx) => (
+                  {[Array.from(new Set(data.interviewQuestions?.flatMap(item => item.patterns)))]?.map((pattern, idx) => (
                     <option key={idx} value={pattern}>{pattern}</option>
                   ))}
                 </select>
@@ -104,7 +104,7 @@ const MainContent = () => {
               <th>Companies
                 <select style={{ margin: 'unset', width: '100%', marginTop: '5px' }} onChange={(e) => handleFilterChange(e, 'companies')} value={filters.companies}>
                   <option value="">All</option>
-                  {[Array.from(new Set(data.interviewQuestions?.flatMap(item => item.patterns)))].map((company, idx) => (
+                  {[Array.from(new Set(data.interviewQuestions?.flatMap(item => item.patterns)))]?.map((company, idx) => (
                     <option key={idx} value={company}>{company}</option>
                   ))}
                 </select>
@@ -115,7 +115,7 @@ const MainContent = () => {
             </tr>
           </thead>
           <tbody>
-            {filteredQuestions.map((item, index) => (
+            {filteredQuestions?.map((item, index) => (
               <tr key={item.id} className={index % 2 === 0 ? styles.rowEven : styles.rowOdd}>
                 <td>
                   <input
@@ -132,7 +132,7 @@ const MainContent = () => {
                 <td>{item.question}</td>
                 <td><a href={item.solutionLink} target="_blank" rel="noopener noreferrer">🔗</a></td>
                 <td>
-                  {item.patterns.map((pattern, idx) => (
+                  {item.patterns?.map((pattern, idx) => (
                     <span key={idx} className={styles.tag}>{pattern}</span>
                   ))}
                 </td>
