@@ -13,7 +13,7 @@ const Nav = () => {
         </div>
         <div id="nav-content" tabIndex={0}>
           <ul className="navbar">
-            <li>
+            {/* <li>
               <input type="checkbox" id="jobs" />
               <label htmlFor="jobs">
                 <span className="drop-down-icon">Learn By Topics</span>
@@ -23,8 +23,9 @@ const Nav = () => {
                 <li><a href="/">Stacks</a></li>
               </ul>
             </li>
-            <li><a href="/">Leetcode 75</a></li>
-            <li><a href="/">System Design</a></li>
+            <li><a href="/">Leetcode 75</a></li> */}
+            <li><a href="/">Home</a></li>
+            <li><a href="/leetcode-gems">LeetCode Gems</a></li>
           </ul>
         </div>
       </nav>
