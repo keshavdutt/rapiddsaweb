@@ -2,41 +2,44 @@
 
 .main_content {
     padding: 20px;
-  }
-  
-  .topics_table {
+}
+
+.topics_table {
     width: 100%;
     margin-top: 20px;
     border-collapse: collapse;
     font-family: Arial, sans-serif;
-  }
-  
-  .topics_table th,
-  .topics_table td {
+}
+
+.topics_table th,
+.topics_table td {
     padding: 12px;
     border: 1px solid #ddd;
     text-align: left;
-  }
-  
-  .topics_table th {
+}
+
+.topics_table th {
     background-color: #f2f2f2;
     font-weight: bold;
-  }
-  
-  .topics_table tr:nth-child(even) {
+}
+
+.topics_table tr:nth-child(even) {
     background-color: #f9f9f9;
-  }
-  
-  .topics_table tr:hover {
+}
+
+.topics_table tr:hover {
     background-color: #eaeaea;
-  }
-  
-  .topics_table a {
+}
+
+.topics_table a {
     color: #0070f3;
     text-decoration: none;
-  }
-  
-  .topics_table a:hover {
+}
+
+.topics_table a:hover {
     text-decoration: underline;
-  }
+}
+
+
+
   
