@@ -1,8 +1,26 @@
-"use client";
-
-import { useEffect, useState } from 'react';
-import styles from './MainContent.module.css'; // CSS module for styling
-import interviewQuestions from '../../public/questions'; // Import mock data
+"use client"
+import React, { useState, useEffect } from 'react';
+import { 
+  Table, 
+  TableBody, 
+  TableCaption, 
+  TableCell, 
+  TableHead, 
+  TableHeader, 
+  TableRow 
+} from '@/components/ui/table';
+import { 
+  Select, 
+  SelectContent, 
+  SelectItem, 
+  SelectTrigger, 
+  SelectValue 
+} from '@/components/ui/select';
+import { Checkbox } from '@/components/ui/checkbox';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { ArrowUpDown, Link } from 'lucide-react';
+import interviewQuestions from '../../public/questions';
 
 const MainContent = () => {
   // Load initial data with minimal statuses from localStorage
@@ -15,9 +33,10 @@ const MainContent = () => {
         lastSolved: storedStatuses[question.id]?.lastSolved || "",
       }));
     }
+    return interviewQuestions;
   };
 
-  const [data, setData] = useState({ interviewQuestions: loadData() });
+  const [questions, setQuestions] = useState(loadData());
   const [filters, setFilters] = useState({
     difficulty: '',
     patterns: '',
@@ -25,130 +44,192 @@ const MainContent = () => {
     solved: '',
   });
 
-  // Effect to sync minimal statuses with localStorage
+  // Sync with localStorage
   useEffect(() => {
-    const questionStatuses = data.interviewQuestions.reduce((acc, question) => {
-      acc[question.id] = { selected: question.selected, lastSolved: question.lastSolved };
-      return acc;
-    }, {});
     if (typeof window !== "undefined") {
+      const questionStatuses = questions.reduce((acc, question) => {
+        acc[question.id] = { 
+          selected: question.selected, 
+          lastSolved: question.lastSolved 
+        };
+        return acc;
+      }, {});
       localStorage.setItem('questionStatuses', JSON.stringify(questionStatuses));
     }
-  }, [data]);
+  }, [questions]);
 
-  // Handler to toggle checkbox selection
-  const handleCheckboxChange = (id) => {
-    setData((prevData) => {
-      const updatedQuestions = prevData.interviewQuestions?.map((item) => {
-        if (item.id === id) {
-          return {
-            ...item,
-            selected: !item.selected,
-            lastSolved: !item.selected ? new Date().toLocaleDateString() : "", // Set or reset the date
-          };
-        }
-        return item;
-      });
-      return { interviewQuestions: updatedQuestions };
-    });
+  // Toggle question solved status
+  const toggleQuestionSolved = (id) => {
+    setQuestions(prev => 
+      prev.map(q => 
+        q.id === id 
+          ? { 
+              ...q, 
+              selected: !q.selected, 
+              lastSolved: !q.selected ? new Date().toLocaleDateString() : "" 
+            }
+          : q
+      )
+    );
   };
 
-  // Handle filter change
-  const handleFilterChange = (e, filterType) => {
-    setFilters((prevFilters) => ({
-      ...prevFilters,
-      [filterType]: e.target.value,
-    }));
-  };
-
-  // Filtered data
-  const filteredQuestions = data.interviewQuestions?.filter((item) => {
-    const patternMatch = filters.patterns ? item.patterns.includes(filters.patterns) : true;
-    const difficultyMatch = filters.difficulty ? item.difficulty === filters.difficulty : true;
-    const companyMatch = filters.companies ? item.companies.includes(filters.companies) : true;
-    const solvedMatch = filters.solved === 'solved' ? item.lastSolved !== "" : (filters.solved === 'unsolved' ? item.lastSolved === "" : true);
+  // Filtered and processed questions
+  const processedQuestions = questions.filter(item => {
+    const patternMatch = filters.patterns === 'all' 
+      ? true 
+      : item.patterns.includes(filters.patterns);
+    const difficultyMatch = filters.difficulty === 'all' 
+      ? true 
+      : item.difficulty === filters.difficulty;
+    const companyMatch = filters.companies === 'all' 
+      ? true 
+      : item.companies.includes(filters.companies);
+    const solvedMatch = filters.solved === 'solved' 
+      ? item.lastSolved !== "" 
+      : (filters.solved === 'unsolved' 
+          ? item.lastSolved === "" 
+          : true);
+    
     return patternMatch && difficultyMatch && companyMatch && solvedMatch;
   });
 
+  // Get unique filter options
+  const uniquePatterns = [...new Set(questions.flatMap(q => q.patterns))];
+  const uniqueCompanies = [...new Set(questions.flatMap(q => q.companies))];
+
   return (
-    <main className="main_content">
-      <div className="full_content">
-        <table className={styles.dataTable}>
-          <thead>
-            <tr>
-              <th>
-                <select style={{ margin: 'unset', width: '100%', marginTop: '5px' }} onChange={(e) => handleFilterChange(e, 'solved')} value={filters.solved}>
-                  <option value="">All</option>
-                  <option value="solved">Solved</option>
-                  <option value="unsolved">Unsolved</option>
-                </select>
-              </th>
-              <th>Questions</th>
-              <th>Solution</th>
-              <th>Patterns
-                <select style={{ margin: 'unset', width: '100%', marginTop: '5px' }} onChange={(e) => handleFilterChange(e, 'patterns')} value={filters.patterns}>
-                  <option value="">All</option>
-                  {Array.from(new Set(data.interviewQuestions?.map(item => item.patterns).flat())).map((pattern, idx) => (
-                    <option key={idx} value={pattern}>{pattern}</option>
-                  ))}
-                </select>
-              </th>
-              <th>Difficulty
-                <select style={{ margin: 'unset', width: '100%', marginTop: '5px' }} onChange={(e) => handleFilterChange(e, 'difficulty')} value={filters.difficulty}>
-                  <option value="">All</option>
-                  <option value="Easy">Easy</option>
-                  <option value="Medium">Medium</option>
-                  <option value="Hard">Hard</option>
-                </select>
-              </th>
-              <th>Companies
-                <select style={{ margin: 'unset', width: '100%', marginTop: '5px' }} onChange={(e) => handleFilterChange(e, 'companies')} value={filters.companies}>
-                  <option value="">All</option>
-                  {Array.from(new Set(data.interviewQuestions?.map(item => item.companies).flat())).map((company, idx) => (
-                    <option key={idx} value={company}>{company}</option>
-                  ))}
-                </select>
-              </th>
-              <th style={{ width: '125px' }}>
-                Last Solved On
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredQuestions?.map((item, index) => (
-              <tr key={item.id} className={index % 2 === 0 ? styles.rowEven : styles.rowOdd}>
-                <td>
-                  <input
-                    type="checkbox"
-                    checked={item.selected}
-                    onChange={() => handleCheckboxChange(item.id)}
-                    style={{
-                      display: 'inline-block',
-                      width: '16px',
-                      height: '16px',
-                    }}
-                  />
-                </td>
-                <td>{item.question}</td>
-                <td><a href={item.solutionLink} target="_blank" rel="noopener noreferrer">🔗</a></td>
-                <td>
-                  {item.patterns?.map((pattern, idx) => (
-                    <span key={idx} className={styles.tag}>{pattern}</span>
-                  ))}
-                </td>
-                <td>
-                  <span className={`${styles.difficulty} ${styles[item.difficulty.toLowerCase()]}`}>
-                    {item.difficulty}
-                  </span>
-                </td>
-                <td>{item.companies.join(', ')}</td>
-                <td>{item.lastSolved || "Unsolved"}</td>
-              </tr>
+    <div className="p-4 space-y-4">
+      <div className="flex space-x-2">
+        {/* Solved Status Filter */}
+        <Select 
+          onValueChange={(value) => setFilters(prev => ({ ...prev, solved: value || 'all' }))}
+          value={filters.solved || 'all'}
+        >
+          <SelectTrigger className="w-[180px]">
+            <SelectValue placeholder="Solve Status" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="all">All</SelectItem>
+            <SelectItem value="solved">Solved</SelectItem>
+            <SelectItem value="unsolved">Unsolved</SelectItem>
+          </SelectContent>
+        </Select>
+
+        {/* Patterns Filter */}
+        <Select 
+          onValueChange={(value) => setFilters(prev => ({ ...prev, patterns: value || 'all' }))}
+          value={filters.patterns || 'all'}
+        >
+          <SelectTrigger className="w-[180px]">
+            <SelectValue placeholder="Patterns" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="all">All Patterns</SelectItem>
+            {uniquePatterns.map(pattern => (
+              <SelectItem key={pattern} value={pattern}>{pattern}</SelectItem>
             ))}
-          </tbody>
-        </table>
+          </SelectContent>
+        </Select>
+
+        {/* Difficulty Filter */}
+        <Select 
+          onValueChange={(value) => setFilters(prev => ({ ...prev, difficulty: value || 'all' }))}
+          value={filters.difficulty || 'all'}
+        >
+          <SelectTrigger className="w-[180px]">
+            <SelectValue placeholder="Difficulty" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="all">All Difficulties</SelectItem>
+            <SelectItem value="Easy">Easy</SelectItem>
+            <SelectItem value="Medium">Medium</SelectItem>
+            <SelectItem value="Hard">Hard</SelectItem>
+          </SelectContent>
+        </Select>
+
+        {/* Companies Filter */}
+        <Select 
+          onValueChange={(value) => setFilters(prev => ({ ...prev, companies: value || 'all' }))}
+          value={filters.companies || 'all'}
+        >
+          <SelectTrigger className="w-[180px]">
+            <SelectValue placeholder="Companies" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="all">All Companies</SelectItem>
+            {uniqueCompanies.map(company => (
+              <SelectItem key={company} value={company}>{company}</SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+
+        {/* Reset Filters Button */}
+        <Button 
+          variant="outline" 
+          onClick={() => setFilters({ difficulty: 'all', patterns: 'all', companies: 'all', solved: 'all' })}
+        >
+          Reset Filters
+        </Button>
       </div>
-    </main>
+
+      <Table>
+        <TableCaption>Interview Questions Tracker</TableCaption>
+        <TableHeader>
+          <TableRow>
+            <TableHead className="w-[50px]">Solved</TableHead>
+            <TableHead>Question</TableHead>
+            <TableHead>Solution</TableHead>
+            <TableHead>Patterns</TableHead>
+            <TableHead>Difficulty</TableHead>
+            <TableHead>Companies</TableHead>
+            <TableHead>Last Solved</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {processedQuestions.map((item) => (
+            <TableRow key={item.id}>
+              <TableCell>
+                <Checkbox
+                  checked={item.selected}
+                  onCheckedChange={() => toggleQuestionSolved(item.id)}
+                />
+              </TableCell>
+              <TableCell>{item.question}</TableCell>
+              <TableCell>
+                <Button variant="ghost" size="icon" asChild>
+                  <a href={item.solutionLink} target="_blank" rel="noopener noreferrer">
+                    <Link className="h-4 w-4" />
+                  </a>
+                </Button>
+              </TableCell>
+              <TableCell>
+                <div className="flex gap-1">
+                  {item.patterns.map((pattern) => (
+                    <Badge key={pattern} variant="secondary">
+                      {pattern}
+                    </Badge>
+                  ))}
+                </div>
+              </TableCell>
+              <TableCell>
+                <Badge 
+                  variant="outline"
+                  className={`
+                    ${item.difficulty === 'Easy' && 'text-green-600 border-green-600'}
+                    ${item.difficulty === 'Medium' && 'text-yellow-600 border-yellow-600'}
+                    ${item.difficulty === 'Hard' && 'text-red-600 border-red-600'}
+                  `}
+                >
+                  {item.difficulty}
+                </Badge>
+              </TableCell>
+              <TableCell>{item.companies.join(', ')}</TableCell>
+              <TableCell>{item.lastSolved || "Not Solved"}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </div>
   );
 };
 
