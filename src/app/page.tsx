@@ -88,9 +88,10 @@ export default function SimplifiedHomePage() {
                 <div className="absolute -inset-4 bg-primary/10 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-all duration-300"></div>
                 <div className="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden transform transition-all duration-300 group-hover:scale-105 group-hover:shadow-3xl">
                   <img
-                     src="https://picsum.photos/600/400"
+                    //  src="https://picsum.photos/600/400"
+                    src="../../dsaprep.jpeg"
                     alt="DSA Interview Preparation"
-                    className="object-cover w-full h-full brightness-90 group-hover:brightness-100 transition-all duration-300"
+                    className="object-cover w-[600px] h-[400px] brightness-90 group-hover:brightness-100 transition-all duration-300"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-75 group-hover:opacity-50 transition-opacity"></div>
                 </div>
