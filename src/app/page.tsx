@@ -33,11 +33,11 @@ export default function SimplifiedHomePage() {
       </header>
 
       {/* Hero Section */}
-      <main className="flex-grow">
+      <main className="flex-grow flex justify-center items-center">
         <section className="container mx-auto px-4 py-16 relative">
           {/* Subtle background pattern */}
           <div className="absolute inset-0 opacity-10 pointer-events-none ">
-            <div className="mt-8 absolute top-0 left-0 w-full h-full bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:16px_16px] scale-150 dark:bg-[radial-gradient(#fff_1px,transparent_1px)]"></div>
+            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:16px_16px] scale-150 dark:bg-[radial-gradient(#fff_1px,transparent_1px)]"></div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center relative z-10">
