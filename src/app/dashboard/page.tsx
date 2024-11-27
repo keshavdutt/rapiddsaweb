@@ -6,7 +6,7 @@ import Header from "@/components/Header"
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar"
 import { Input } from "@/components/ui/input"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Filter, Search, CheckCircle2, Circle } from "lucide-react"
+import { Filter, Search, CheckCircle2, Circle, X, Send, ChevronRight } from "lucide-react"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -238,6 +238,39 @@ export default function Page() {
   const [completedQuestions, setCompletedQuestions] = useState(new Set())
   const [isInitialized, setIsInitialized] = useState(false)
 
+
+  // Load completed questions from localStorage on initial render
+  useEffect(() => {
+    try {
+      const savedCompletedQuestions = localStorage.getItem(STORAGE_KEY)
+      if (savedCompletedQuestions) {
+        const parsedQuestions = JSON.parse(savedCompletedQuestions)
+        if (Array.isArray(parsedQuestions)) {
+          setCompletedQuestions(new Set(parsedQuestions))
+        }
+      }
+    } catch (error) {
+      console.error('Error loading completed questions:', error)
+    } finally {
+      setIsInitialized(true)
+    }
+  }, [])
+
+  // Save to localStorage whenever completedQuestions changes
+  useEffect(() => {
+    if (isInitialized) {
+      try {
+        localStorage.setItem(
+          STORAGE_KEY,
+          JSON.stringify(Array.from(completedQuestions))
+        )
+      } catch (error) {
+        console.error('Error saving completed questions:', error)
+      }
+    }
+  }, [completedQuestions, isInitialized])
+
+
   // Load completed questions from localStorage on initial render
   useEffect(() => {
     try {
@@ -322,6 +355,60 @@ export default function Page() {
   };
 
 
+  // Filter summary component
+  const FilterSummary = () => {
+    // Collect active filters
+    const activeFilters = [
+      selectedTopic && { type: 'Topic', value: selectedTopic, clear: () => setSelectedTopic('') },
+      selectedDifficulty && { type: 'Difficulty', value: selectedDifficulty, clear: () => setSelectedDifficulty('') },
+      selectedCompany && { type: 'Company', value: selectedCompany, clear: () => setSelectedCompany('') },
+      searchTerm && { type: 'Search', value: searchTerm, clear: () => setSearchTerm('') }
+    ].filter(Boolean); // Remove falsy values
+
+    // If no filters are active, return null
+    if (activeFilters.length === 0) return null;
+
+    return (
+      <div className="flex flex-wrap gap-2 mb-4">
+        <div className="text-sm font-medium mr-2 self-center">Filters:</div>
+        {activeFilters.map((filter, index) => (
+          <div
+            key={index}
+            className="flex items-center bg-muted/50 rounded-lg px-3 py-1 text-sm gap-2"
+          >
+            <span className="font-semibold">{filter.type}:</span>
+            <span>{filter.value}</span>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="h-5 w-5 p-0 hover:bg-muted/80"
+              onClick={filter.clear}
+            >
+              <X className="h-4 w-4" />
+            </Button>
+          </div>
+        ))}
+        {activeFilters.length > 1 && (
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => {
+              setSelectedTopic('');
+              setSelectedDifficulty('');
+              setSelectedCompany('');
+              setSearchTerm('');
+            }}
+            className="ml-2 text-destructive hover:bg-destructive/10"
+          >
+            Clear All
+          </Button>
+        )}
+      </div>
+    );
+  };
+
+
+
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -330,7 +417,7 @@ export default function Page() {
         <div className="flex flex-1 flex-col gap-4 p-4 pt-0">
           <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min p-6">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-semibold">Algorithm Questions</h2>
+              <h2 className="text-2xl font-semibold">Question Bank</h2>
               <div className="flex gap-2">
                 {/* Topic Filter */}
                 <DropdownMenu>
@@ -402,6 +489,8 @@ export default function Page() {
                 </DropdownMenu>
               </div>
             </div>
+
+            <FilterSummary />
 
             {/* Search Bar */}
             <div className="relative mb-6">
@@ -536,3 +625,5 @@ export default function Page() {
     </SidebarProvider>
   )
 }
+
+
