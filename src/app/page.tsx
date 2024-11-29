@@ -22,12 +22,12 @@ export default function SimplifiedHomePage() {
           </div>
           <div className="flex items-center space-x-4">
             <ThemeToggle />
-            <Button size='sm' variant='default'>
+            {/* <Button size='sm' variant='default'>
               <Link href="/dashboard" className="flex items-center space-x-2">
                 <span>Get Started</span>
                 <ChevronRight className="w-5 h-5" />
               </Link>
-            </Button>
+            </Button> */}
           </div>
         </div>
       </header>
@@ -36,8 +36,8 @@ export default function SimplifiedHomePage() {
       <main className="flex-grow flex justify-center items-center">
         <section className="container mx-auto px-4 py-16 relative">
           {/* Subtle background pattern */}
-          <div className="absolute inset-0 opacity-10 pointer-events-none ">
-            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:16px_16px] scale-150 dark:bg-[radial-gradient(#fff_1px,transparent_1px)]"></div>
+          <div className="absolute inset-0 opacity-10 pointer-events-none overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(#000_1px,transparent_1px)] [background-size:16px_16px] dark:bg-[radial-gradient(#fff_1px,transparent_1px)] [transform:scale(1.1)]"></div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-12 items-center relative z-10">
@@ -45,17 +45,17 @@ export default function SimplifiedHomePage() {
               <div className="bg-primary/10 inline-block px-4 py-2 rounded-full text-primary font-medium text-sm animate-pulse-slow">
                 Elevate Your Tech Career
               </div>
-              
+
               <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-gray-100 leading-tight">
                 Master DSA,
                 <br />
                 <span className="text-primary">Ace Tech Interviews</span>
               </h1>
-              
+
               <p className="text-xl text-muted-foreground max-w-xl">
                 RapidDSA is your comprehensive platform for transforming data structures and algorithm skills into interview success.
               </p>
-              
+
               {/* Feature Bullets */}
               <div className="space-y-3 pt-4">
                 {features.map((feature, index) => (
@@ -65,7 +65,7 @@ export default function SimplifiedHomePage() {
                   </div>
                 ))}
               </div>
-              
+
               <div className="flex flex-col sm:flex-row gap-4 pt-6">
                 <Button size="lg" className="group w-full sm:w-auto">
                   Start Your Journey
@@ -81,7 +81,7 @@ export default function SimplifiedHomePage() {
                 </Button>
               </div>
             </div>
-            
+
             {/* Image Section */}
             <div className="hidden md:flex justify-center items-center">
               <div className="relative group">
@@ -101,12 +101,12 @@ export default function SimplifiedHomePage() {
         </section>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-secondary/20 py-6">
-        <div className="container mx-auto px-4 text-center text-muted-foreground">
-          © 2024 RapidDSA. All rights reserved.
-        </div>
-      </footer>
+{/* Footer */}
+<footer className="bg-secondary/20 py-6">
+  <div className="container mx-auto px-4 text-center text-muted-foreground">
+    © 2024 RapidDSA. All rights reserved.
+  </div>
+</footer>
     </div>
   )
 }
