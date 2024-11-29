@@ -4,6 +4,8 @@ import { SidebarTrigger } from "./ui/sidebar";
 import { Button } from "./ui/button";
 import { Settings } from "lucide-react";
 import { Separator } from "./ui/separator";
+import { SignedIn, UserButton } from "@clerk/nextjs";
+import { Suspense } from "react";
 
 const Header = () => {
   return (
@@ -42,6 +44,20 @@ const Header = () => {
           >
             <Settings className="h-4 w-4" />
           </Button>
+
+          <Button
+            variant="ghost"
+            size="icon"
+            className="h-8 w-8"
+          >
+            <Suspense>
+              <UserButton />
+
+            </Suspense>
+          </Button>
+
+
+
 
         </div>
       </div>
